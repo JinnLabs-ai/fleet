@@ -1,0 +1,18 @@
+# Never commit secrets
+.env
+.env.*
+*secret*
+*credential*
+*.pem
+*.key
+!*.pub
+!team_authorized_keys
+
+# macOS
+.DS_Store
+._*
+
+# Personal scratch
+scratch/
+tmp/
+*.log
