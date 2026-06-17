@@ -6,7 +6,18 @@ End-to-end procedure to take a blank SD card to a deployed, Tailscale-connected 
 
 1. **Source image** — `~/Desktop/jp62-orin-nano-sd-blob.img` (22 GiB uncompressed)
    - sha256: `239035634896b6f4e99ea7ca4460978f1f4ba9f58889dc6a803b04618dbb07d7`
-   - If missing: unzip `jp62-orin-nano-sd-card-image.zip` from NVIDIA's JetPack 6.2 downloads page.
+   - **Get it on any laptop (recommended):**
+     ```bash
+     ./scripts/get-jetson-image.sh        # downloads from Azure Blob + verifies sha256
+     ```
+     This is the stock NVIDIA JetPack 6.2 Orin Nano image, hosted at
+     `jinndatastorage / jinn-jetson-images / jp62-orin-nano-sd-blob.img` (private —
+     the helper mints a short-lived read-only SAS using your `az login`). Requires
+     `az login` (access to the `jinn-dev` resource group) + `azcopy`
+     (`brew install azure-cli azcopy`).
+   - **Fallback if you can't reach the blob:** unzip `jp62-orin-nano-sd-card-image.zip`
+     from NVIDIA's JetPack 6.2 downloads page (it is the same stock image; verify the
+     sha256 above matches after unzipping).
 2. **Tailscale auth key** — generate at https://login.tailscale.com/admin/settings/keys
    - Reusable: yes
    - Ephemeral: no
